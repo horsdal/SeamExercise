@@ -25,23 +25,38 @@
         }
         else // https
         {
-          try
-          {
-            var shortened =
-              ConfigurationManager.AppSettings["secure-scheme"] + "://" + ConfigurationManager.AppSettings["host"] + "/" + parsedUrl.ToString().ShortenUrl();
-            var parsedShortUrl = new Uri(shortened, UriKind.Absolute);
-          }
-          catch (UriFormatException)
-          {
-            // just retry, shortening algo is flaky. WTH it's friday I'm off in bit. Really should fix at some point.
-            var shortened =
-              ConfigurationManager.AppSettings["secure-scheme"] + "://" + ConfigurationManager.AppSettings["host"] + "/" + parsedUrl.ToString().ShortenUrl();
-          }
+          ShortenSecureUrl(parsedUrl, new UrlStore());
         }
       }
       catch (UriFormatException e)
       {
         throw new ArgumentException("url must be absolute", e); 
+      }
+    }
+
+    public static void ShortenSecureUrl(Uri parsedUrl, UrlStore datastore)
+    {
+      try
+      {
+        string tempQualifier = parsedUrl.ToString();
+        var shortUrlPath = tempQualifier.GetHashCode().ToString();
+        datastore.SaveUrl(tempQualifier, shortUrlPath);
+        var shortenUrl = shortUrlPath;
+        var shortened =
+          ConfigurationManager.AppSettings["secure-scheme"] + "://" + ConfigurationManager.AppSettings["host"] + "/" +
+          shortenUrl;
+        var parsedShortUrl = new Uri(shortened, UriKind.Absolute);
+      }
+      catch (UriFormatException)
+      {
+        // just retry, shortening algo is flaky. WTH it's friday I'm off in bit. Really should fix at some point.
+        string tempQualifier = parsedUrl.ToString();
+        var shortUrlPath = tempQualifier.GetHashCode().ToString();
+        datastore.SaveUrl(tempQualifier, shortUrlPath);
+        var shortenUrl = shortUrlPath;
+        var shortened =
+          ConfigurationManager.AppSettings["secure-scheme"] + "://" + ConfigurationManager.AppSettings["host"] + "/" +
+          shortenUrl;
       }
     }
 

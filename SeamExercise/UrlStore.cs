@@ -15,7 +15,7 @@
       this.urls = database.GetCollection("urls");
     }
 
-    public void SaveUrl(string url, string shortenedUrl)
+    public virtual void SaveUrl(string url, string shortenedUrl)
     {
       this.urls.Save(new { Id = url, url, shortenedUrl });
     }
