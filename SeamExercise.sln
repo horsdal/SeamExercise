@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeamExercise", "SeamExercis
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShortenerApplication", "ShortenerApplication\ShortenerApplication.csproj", "{255FCA51-14C1-40DD-B727-63BBC2D02D93}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{935E650F-F125-4981-A7D3-2C11C1DCFB28}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{255FCA51-14C1-40DD-B727-63BBC2D02D93}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{255FCA51-14C1-40DD-B727-63BBC2D02D93}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{255FCA51-14C1-40DD-B727-63BBC2D02D93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{935E650F-F125-4981-A7D3-2C11C1DCFB28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{935E650F-F125-4981-A7D3-2C11C1DCFB28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{935E650F-F125-4981-A7D3-2C11C1DCFB28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{935E650F-F125-4981-A7D3-2C11C1DCFB28}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
